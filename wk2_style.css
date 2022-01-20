@@ -1,0 +1,139 @@
+/*
+Primary references:
+https://cssreference.io/
+https://www.w3schools.com/cssref/
+https://www.w3docs.com/snippets/css.html
+*/
+p {
+    font-family: Georgia, serif;
+    color: #009781;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: #663399;
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin: 5px;
+}
+
+/* Sub-header */
+h4 {
+    font-family: Arial, sans-serif;
+    font-variant: small-caps;
+    color: #006150;
+    padding: 0;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+body {
+    background-color: #FFF6FF;
+}
+
+/*
+Referenced https://www.w3docs.com/snippets/css/how-to-add-a-background
+-color-for-the-text-width-instead-of-the-entire-element-width.html
+*/
+ul {
+    display: table;
+    font-family: Georgia, serif;
+    color: #663399;
+    background-color: #C3FCF1;
+    list-style-type: circle;
+    padding: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 35px;
+}
+
+li {
+    font-style: italic;
+}
+
+/* Table styles */
+table, th, td {
+    border: 1px solid #006150;
+    padding: 2px;
+}
+
+th {
+    background-color: #BDA0D3;
+    color: #663399;
+}
+
+td {
+    background-color: #C3FCF1;
+    color: #663399;
+}
+
+/* Variety of customizations for links */
+a:link {
+    color: #663399;
+}
+
+a:visited {
+    color: #9F0087;
+}
+
+/* Highlights links when hovered over */
+a:hover {
+    background-color: #BDA0D3;
+}
+
+/* Class styles */
+.section-header {
+    font-variant: small-caps;
+    color: #006150;
+}
+
+.favorite-section {
+    border: 3px dotted #BDA0D3;
+    padding: 10px;
+    margin: 20px;
+}
+
+.favorite-image {
+    padding-left: 5px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+/* ID styles */
+#page-header {
+    background-image: url("wk2_css_header.png");
+}
+
+#page-title {
+    text-shadow: 2px 4px 8px #B076E4;
+    font-size: 2.5em;
+    font-variant: small-caps;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+#favorite-movie-name {
+    font-style: italic;
+    color: #663399;
+}
+
+#favorite-music-name {
+    color: #663399;
+    font-weight: bold;
+}
+
+#most-favorite-food {
+    color: #9F0087;
+    text-shadow: 1px 2px 6px #B076E4;
+    font-weight: bold;
+}
