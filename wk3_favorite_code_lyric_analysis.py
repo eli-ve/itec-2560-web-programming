@@ -1,12 +1,4 @@
 """
-I'm sorry this is late. It wasn't a very difficult lab, but I had a rough week and couldn't get all my work done on
-time for my classes.
-
-This was a fun bit of code to work on. It made me very curious about how word counts would work for
-a song in languages without spaces between the words, such as Japanese. That's something I want to play around
-with this summer between programming classes. :) I'm also going to try to figure out how to sort the dictionary
-entries alphabetically within each number count, since I'm not understanding that yet.
-
 "Murmaider" - Dethklok
 Produced by Ulrich Wild & Brendon Small
 Album The Dethalbum
