@@ -1,0 +1,16 @@
+.jumbotron {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #76C0FF;
+}
+
+body {
+    color: #062F44;
+    font-family: 'Montserrat', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #C2E3FF;
+}
+
+.form-control {
+    background-color: #ECFBFF;
+}
