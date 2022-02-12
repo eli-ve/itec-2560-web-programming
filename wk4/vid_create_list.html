@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <p>Enter some text to add to the list:</p>
+    <input id="new-text">
+    <label for="new-text"></label>
+    <button id="add-text">Add</button>
+    <ul id="list-of-text"></ul>
+    <button id="clear-list">Clear All</button>
+
+<script>
+
+    let textInput = document.querySelector('#new-text')
+    let addButton = document.querySelector('#add-text')
+    let clearButton = document.querySelector('#clear-list')
+    let textList = document.querySelector('#list-of-text')
+    let itemsInList = 0
+    let maxItems = 10
+
+    document.addEventListener('keyup', function() {
+        if (event.keyCode == 13 || event.key == 'Enter') {
+            addButton.click()
+        }
+    })
+
+    addButton.addEventListener('click', function() {
+
+        let newText = textInput.value
+        if (newText.length == 0) {
+            alert('Please enter some text')
+            return
+        }
+
+        if (itemsInList >= maxItems) {
+            alert('List cannot have more than 10 items. Please clear all and ' +
+                'try again.')
+            return
+        }
+
+        let newListItem = document.createElement('li')
+        newListItem.innerHTML = newText
+        textList.appendChild(newListItem)
+        textInput.value = ''
+        itemsInList++
+    })
+
+    clearButton.addEventListener('click', function() {
+        let parent = textList
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild)
+        }
+        itemsInList = 0
+    })
+
+</script>
+
+</body>
+</html>

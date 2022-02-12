@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="wk4_list.css">
+
+</head>
+<body>
+
+    <h1 class="header">Create a List</h1>
+
+    <div id="input-section">
+        <label for="list-entry">Enter text to add to your list:</label><br>
+        <input id="list-entry" type="text">
+        <button id="add-button">Add to list</button>
+    </div>
+
+    <div id="user-list-section">
+        <h2 class="header">Your list:</h2>
+        <ul id="user-list"></ul>
+    </div>
+
+    <button id="clear-list">Clear list</button>
+
+
+<script>
+
+    let textInput = document.querySelector('#list-entry')
+    let addButton = document.querySelector('#add-button')
+    let clearButton = document.querySelector('#clear-list')
+    let userList = document.querySelector('#user-list')
+    let itemsInList = 0
+    let maxItems = 10
+
+    document.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13 || event.key === 'Enter') {
+            addButton.click()
+        }
+    })
+
+    addButton.addEventListener('click', function() {
+        let newText = textInput.value
+        if (newText.length === 0) {
+            alert('Please enter some text.')
+            return
+        }
+
+        if (newText.length > 50) {
+            alert('Text cannot be longer than 50 characters.')
+            return
+        }
+
+        if (itemsInList >= maxItems) {
+            alert('List cannot have more than 10 items. Please clear all and ' +
+                'try again.')
+            return
+        }
+
+        let newListItem = document.createElement('li')
+        newListItem.innerHTML = newText
+        userList.appendChild(newListItem)
+        textInput.value = ''
+        itemsInList++
+    })
+
+
+    clearButton.addEventListener('click', function() {
+        let parent = userList
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild)
+        }
+        itemsInList = 0
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Club Membership</title>
+
+    <style>
+
+        .selected {
+            text-decoration: line-through ;
+            font-style: italic;
+            color: gray;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 5px 5px 0px;
+            box-sizing: border-box;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <h1>Student Club Roster</h1>
+
+    <h2>Add Students</h2>
+
+    <label for="student-name">Student Name</label>
+    <input id="student-name" name="student-name">
+    <br>
+    <label for="student-id">Student ID</label>
+    <input id="student-id" name="student-id">
+    <br>
+    <label for="student-gpa">Student GPA</label>
+    <input id="student-gpa" name="student-gpa" type="number">
+    <br>
+    <button id="add-student">Add Student</button>
+
+    <h2>Student List</h2>
+
+    <p>There are
+        <span id="student-count">
+              <!-- use JavaScript to count the number of students, and show here -->
+            </span>
+        student(s) in the club.</p>
+
+    <ul id="student-list">
+        <!-- use JavaScript to create li elements  -->
+    </ul>
+
+    <button id="remove-selected-students">Remove selected students</button>
+
+<script>
+
+    // Assigning id's to variables
+    let studentName = document.querySelector('#student-name')
+    let studentID = document.querySelector('#student-id')
+    let studentGPA = document.querySelector('#student-gpa')
+    let addButton = document.querySelector('#add-student')
+    let studentCount = document.querySelector('#student-count')
+    let studentList = document.querySelector('#student-list')
+    // let removeButton = document.querySelector('#remove-selected-students')
+    studentCount.innerHTML = '0'
+
+    document.addEventListener('keyup', function(event) {
+        if (event.keyCode === 13 || event.key === 'Enter') {
+            addButton.click()
+        }
+    })
+
+    // Basic input validation with alerts to user
+    addButton.addEventListener('click', function () {
+        let newName = studentName.value
+        if (newName.length === 0) {
+            alert('Please enter a name.')
+            return
+        }
+
+        let newID = studentID.value
+        if (newID.length === 0) {
+            alert('Please enter a student ID.')
+            return
+        }
+
+        let newGPA = studentGPA.value
+        if (newGPA.length === 0) {
+            alert('Please enter a GPA.')
+            return
+        }
+
+        if (newGPA > 4) {
+            alert('GPA must be no more than 4.')
+            return
+        }
+
+        // Creating new li element with id & class attributes, and formatted text using variables
+        let newStudentEntry = document.createElement('li')
+        newStudentEntry.setAttribute('id', newID)
+        newStudentEntry.setAttribute('class', 'clubMember')
+        newStudentEntry.innerHTML = `${newName}, id: ${newID}, GPA ${newGPA}`
+        studentList.appendChild(newStudentEntry)
+        // Resets input boxes & adds +1 to student count
+        studentName.value = ''
+        studentID.value = ''
+        studentGPA.value = ''
+        studentCount.innerHTML++
+    })
+
+    // TODO: ??????????????????????????????????????????????????
+    // I have NO IDEA WHATSOEVER as to how to make this work -- all I've managed to do so far
+    // is change the class of ANY element when clicked on, but I can't get it to access an
+    // individual li element. All the info I've found so far either requires changing the
+    // HTML or knowing the id already, and the assignment says not to change the HTML, but
+    // I don't know how to assign the id in a way that can be known/accessed easily, or
+    // how to get it into a variable to work with. :(((((
+
+    // Everything below this is a mess, and I have no idea how to fix it...
+
+    // let removeID = document.getElementsByClassName('clubMember')[0].id
+    // console.log(removeID)
+
+    // document.addEventListener('onClick', function(event) {
+    //     // let removeID = document.getElementsByClassName('clubMember')[0].id
+    //     // let toRemove = document.getElementById(removeID)
+    //     // toRemove.classList.toggle('selected')
+    //
+    // })
+
+    // studentList.addEventListener('click', function(event) {
+    //     // document.getElementById('newID').setAttribute('class', 'selected')
+    //     //
+    //     // event.target.classList.toggle('selected')
+    //     // let removeID = event.target.closest('li').getAttribute('id')
+    //     // let toRemove = document.getElementById(removeID)
+    //     // toRemove.classList.toggle('selected')
+    // })
+
+    // removeButton.addEventListener('click', function(event) {
+    //     event.target.classList.remove('selected')
+    // })
+
+</script>
+
+</body>
+</html>

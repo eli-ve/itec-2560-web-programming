@@ -1,0 +1,33 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    color: #580063;
+    background-color: #C6D5FF;
+}
+
+ul {
+    display: table;
+    background-color: #B9FFF9;
+    list-style-type: circle;
+    padding: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 40px;
+}
+
+button {
+    background-color: #B9FFF9;
+}
+
+.header {
+    font-variant: small-caps;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#input-section {
+    margin-bottom: 15px;
+}
+
+#user-list-section {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <p>What is the only (known) planet humans live on (circa 2022)?</p>
+
+    <button class="incorrect-answer">Venus</button>
+    <button id="correct-answer">Earth</button>
+    <button class="incorrect-answer">Saturn</button>
+
+    <p id="result"></p>
+
+<script>
+
+    let correctAnswerButton = document.querySelector('#correct-answer')
+
+    let incorrectAnswerButtons = document.querySelectorAll('.incorrect-answer')
+
+    // reads and saves default values to reset later
+    let defaultButtonColor = correctAnswerButton.style.background
+    let defaultButtonTextColor = correctAnswerButton.style.color
+
+    let result = document.querySelector('#result')
+
+    // adds event listener for right answer button
+    correctAnswerButton.addEventListener('click', function() {
+        result.innerHTML = 'Correct answer!'
+        correctAnswerButton.style.background = 'green'
+        correctAnswerButton.style.color = 'white'
+    })
+
+    // loop -- adds event listener for both wrong answer buttons
+    // ** functional-style loop -- most common in Javascript
+    incorrectAnswerButtons.forEach(function(incorrectAnswerButton) {
+        incorrectAnswerButton.addEventListener('click', function() {
+            result.innerHTML = 'Sorry, incorrect. Try Again!'
+            // resets correctAnswerButton style to default values
+            correctAnswerButton.style.background = defaultButtonColor
+            correctAnswerButton.style.color = defaultButtonTextColor
+        })
+    })
+
+    // alternatively:
+    // ** imperative-style loop, for loop -- seen in Java and C#
+    for (let x=0 ; x< incorrectAnswerButtons.length ; x++) {
+        let incorrectAnswerButton = incorrectAnswerButtons[x]
+
+        incorrectAnswerButton.addEventListener('click', function() {
+            result.innerHTML = 'Sorry, incorrect. Try Again!'
+            // resets correctAnswerButton style to default values
+            correctAnswerButton.style.background = defaultButtonColor
+            correctAnswerButton.style.color = defaultButtonTextColor
+        })
+    }
+
+</script>
+
+</body>
+</html>

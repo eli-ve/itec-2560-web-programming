@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <!-- make sure to use id to be sure you're working with exact element -->
+    <p id="mouse-me">Move your mouse here</p>
+    <p id="counter">Number of times moused over: </p>
+
+<script>
+
+    // could select by p, but best to use most specific selector possible
+    let message = document.querySelector('#mouse-me')
+    let timesMoused = document.querySelector('#counter')
+    let times = 0
+
+    message.addEventListener('mouseover', function() {
+        message.innerHTML = 'Your mouse is on this message!'
+        if (times === 1) {
+            timesMoused.innerHTML = 'Mouse has been here ' + times + ' time.'
+        } else {
+            timesMoused.innerHTML = 'Mouse has been here ' + times + ' times.'
+        }
+        times++
+    })
+
+    message.addEventListener('mouseout', function() {
+        message.innerHTML = 'Your mouse is NOT on this message.'
+    })
+
+</script>
+
+</body>
+</html>

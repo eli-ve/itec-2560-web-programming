@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Video example -- I have ZERO idea how it's supposed to look/work beyond
+    this right now, so it's broken ATM -->
+
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+        crossorigin="anonymous">
+        -->
+
+    <title>Resize Event</title>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <h1>Computer Programming</h1>
+
+    <!-- Will display the window width here -->
+    <h2 id="width"></h2>
+
+    <!-- Need to define the rows columns -->
+
+    <!-- First row, which will contain two columns -->
+    <div class="row">
+
+        <!-- Inside the row, create a column. This column is 6 units wide -->
+        <!-- md: Will be horizontal above 990px screen width, stacked otherwise -->
+        <div class="col-md-6">
+            <img src="vid_test_img.jpg" alt="neon sign saying nothing to see here">
+        </div>
+
+        <!-- Still inside the row, add a second column, also 6 units wide -->
+        <div class="col-md-6">
+            <h2>A list of programming languages</h2>
+            <ul>
+                <li>Java</li>
+                <li>C#</li>
+                <li>Python</li>
+            </ul>
+        </div>
+
+        <div class="row">
+
+            <!-- sm: Will be horizontal above 768px window width -->
+            <div class="col-sm-4">
+                <h2>Java</h2>
+                <p>Java is a compiled, 00 language</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h2>C#</h2>
+                <p>C# is also a compiled, 00 language</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h2>Python</h2>
+                <p>Python is an interpreted language</p>
+            </div>
+
+        </div>  <!-- End of second row -->
+
+    </div>
+
+</div>
+
+</body>
+
+<!--Javascript to display the browser screen width, and update it
+as the window is resized-->
+<script>
+
+    function displayWidth() {
+        let width = document.body.scrollWidth;
+        let widthDisplayEl = document.querySelector('#width')
+        widthDisplayEl.innerHTML = 'Window width = ${width} pixels'
+    }
+
+    displayWidth()  // Call displayWidth to display its original size
+
+    // Add resize event listener to the window object to update when resized
+    window.addEventListener('resize', displayWidth)
+
+</script>
+</html>

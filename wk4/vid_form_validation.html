@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <p>Please enter your name</p>
+    <input type="text" id="username">
+    <label for="username"></label>
+    <button id ="save-username">Save</button>
+
+    <p id="welcome-message"></p>
+
+<script>
+
+    // Since JS was created for form validation, it does type coercion
+    // All input in a form is saved as strings, so === is used for exact comparison
+    // Triple equals checks for exact type, so '12' !== 12 (since '' is string)
+
+    // Javascript comparison operators: ==, !=, ===, !==, <, >, <=, >=
+    // () around a condition are required -- use {} to contain the statements
+
+    let saveButton = document.querySelector('#save-username')
+    let nameInput = document.querySelector('#username')
+    let welcomeMessage = document.querySelector('#welcome-message')
+
+    saveButton.addEventListener('click', function() {
+        let name = nameInput.value
+
+        if (name.length < 2) {
+            welcomeMessage.innerHTML = 'Please enter at least 2 letters.'
+        } else {
+            welcomeMessage.innerHTML = `Welcome, ${name}!`
+        }
+    })
+
+</script>
+
+</body>
+</html>
