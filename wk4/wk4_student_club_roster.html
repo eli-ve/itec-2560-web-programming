@@ -61,7 +61,7 @@
     let addButton = document.querySelector('#add-student')
     let studentCount = document.querySelector('#student-count')
     let studentList = document.querySelector('#student-list')
-    // let removeButton = document.querySelector('#remove-selected-students')
+    let removeButton = document.querySelector('#remove-selected-students')  // need this
     studentCount.innerHTML = '0'
 
     document.addEventListener('keyup', function(event) {
@@ -100,6 +100,12 @@
         newStudentEntry.setAttribute('id', newID)
         newStudentEntry.setAttribute('class', 'clubMember')
         newStudentEntry.innerHTML = `${newName}, id: ${newID}, GPA ${newGPA}`
+
+        // add a listener to the newStudentEntry element here,
+        newStudentEntry.addEventListener('click', function() {
+            // use element.classList.toggle to add or remove the 'selected' class 
+        })
+
         studentList.appendChild(newStudentEntry)
         // Resets input boxes & adds +1 to student count
         studentName.value = ''
@@ -107,6 +113,15 @@
         studentGPA.value = ''
         studentCount.innerHTML++
     })
+
+
+    // and you need another event listener here for the remove button, 
+    removeButton.addEventListener('click', function() {
+        // delete everything with the class selected
+        let allSelectedStudents = document.querySelectorAll('.selected')
+        // example code in the lab instructions to loop and remove all the elements in allSelectedStudents
+    })
+
 
     // TODO: ??????????????????????????????????????????????????
     // I have NO IDEA WHATSOEVER as to how to make this work -- all I've managed to do so far
