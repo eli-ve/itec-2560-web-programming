@@ -1,6 +1,3 @@
-/* Lab: write the code requested by lines marked //TODO
-You should NOT modify any of the code that's here already. Add the code requested.   */
-
 /* a. Use this JavaScript object. This represents the current position of the International Space Station
 at 1pm on January 12th 2018, fetched from http://api.open-notify.org/iss-now.json.
 */
@@ -73,7 +70,6 @@ cats_and_owners.forEach(function (entry, i) {
 })
 
 cats_and_owners.push({name: "Taylor Swift", cat: "Meredith"})
-
 cats_and_owners.forEach(function (entry, i) {
     let owner = cats_and_owners[i].name
     let cat = cats_and_owners[i].cat
@@ -209,7 +205,7 @@ let nobel_prize_winners_2017 = {
     ]
 }
 
-// TODO print the full name of the Literature Nobel laureate.
+// Prints the full name of the Literature Nobel laureate.
 
 let prizes = nobel_prize_winners_2017.prizes
 prizes.forEach(function (prize, i) {
@@ -225,8 +221,7 @@ prizes.forEach(function (prize, i) {
     }
 })
 
-// TODO print the ids of each of the Physics Nobel laureates.
-//  Your code should still work without modification if a laureate was added, or removed.
+// Prints the ids of each of the Physics Nobel laureates
 
 prizes.forEach(function (prize, i) {
     let category = prizes[i].category
@@ -240,8 +235,7 @@ prizes.forEach(function (prize, i) {
     }
 })
 
-// TODO write code to print the names of all of the prize categories
-//  (So your output would start physics, chemistry, medicine... ).
+// Prints the names of all prize categories
 
 console.log(`2017 Nobel Prize categories:`)
 prizes.forEach(function (prize, i) {
@@ -249,7 +243,7 @@ prizes.forEach(function (prize, i) {
     console.log(category)
 })
 
-// TODO write code to print the total number of prize categories
+// Prints the total number of prize categories
 
 let totalCategories = 0
 prizes.forEach(function (prize, i) {
@@ -258,9 +252,7 @@ prizes.forEach(function (prize, i) {
 
 console.log(`\nThere are a total of ${totalCategories} Nobel prize categories.`)
 
-// TODO write code to count the total number of laureates from 2017.
-//   have a good look at how the JSON is structured, and think about
-//   what loop(s) you'll need to write.
+// Counts the total number of laureates from 2017
 
 let totalWinners = 0
 prizes.forEach(function (prize, i) {
