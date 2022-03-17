@@ -64,6 +64,24 @@
     let removeButton = document.querySelector('#remove-selected-students')
     studentCount.innerHTML = '0'
 
+    // let errors = []
+    //
+    // if (!studentName) {
+    //     errors.push('Enter student name')
+    // }
+    //
+    // if (!studentID) {
+    //     errors.push('Enter student ID')
+    // }
+    // if (!studentGPA || studentGPA < 0 || studentGPA > 4) {
+    //     errors.push('Enter GPA between 0 and 4')
+    // }
+    //
+    // if (errors.length > 0) {
+    //     let errorMsg = errors.join('\n')
+    //     alert(errorMsg)
+    // }
+
     document.addEventListener('keyup', function(event) {
         if (event.keyCode === 13 || event.key === 'Enter') {
             addButton.click()
