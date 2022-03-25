@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello canvas</title>
+
+    <style>
+        canvas {
+            border: 2px black solid;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" height="500" width="500">
+    </canvas>
+
+    <script>
+        let canvas = document.querySelector('#canvas')
+        let context = canvas.getContext('2d')
+
+        // (from upper left corner):
+        // x (across), y (down), width, height
+
+        // TRIANGLE OUTLINE
+        context.beginPath()
+        context.moveTo(65,140)
+        context.lineTo(400,450)
+        context.lineTo(350, 80)
+        context.lineTo(65,140)
+        context.lineTo(400,450)
+        context.lineWidth = 7
+        context.strokeStyle = 'mediumslateblue'
+        context.stroke()
+
+        // change line color/width
+        context.lineWidth = 5
+        context.strokeStyle = 'black'
+
+        // PLAIN BLACK RECTANGLES - 1 FILLED & 1 OUTLINE
+        context.fillRect(170, 100, 150, 100)
+        context.strokeRect(95, 320, 135, 150)
+
+        // BLUE-FILLED RECTANGLE
+        context.fillStyle = 'lightskyblue'
+        context.fillRect(400, 65, 90, 215)
+
+        // PINK DIAGONAL LINE
+        context.beginPath()
+        context.moveTo(445, 80)
+        context.lineTo(320,470)
+        context.lineWidth = 6
+        context.strokeStyle = 'deeppink'
+        context.stroke()
+
+        // LIGHT GREEN RECTANGLE OUTLINE
+        context.strokeStyle = 'palegreen'
+        context.lineWidth = 10
+        context.strokeRect(50, 255, 200, 125)
+
+        // PURPLE-OUTLINED LAVENDER RECTANGLE
+        context.fillStyle = 'plum'
+        context.fillRect(20, 10, 195, 110)
+        context.strokeStyle = 'purple'
+        context.lineWidth = 5
+        context.strokeRect(20, 10, 195, 110)
+
+        // TEAL CIRCLE
+        context.strokeStyle = 'darkcyan'
+        context.lineWidth = 6
+        context.beginPath()  // JS uses radians to measure circles
+        context.arc(400, 310, 75, 0, 6.3)  // or 2 * Math.PI to be precise
+        context.stroke()
+
+        // MAGENTA HALF-CIRCLE
+        context.strokeStyle = 'mediumvioletred'
+        context.lineWidth = 8
+        context.beginPath()
+        context.arc(85, 150, 65, 0, Math.PI)  // for an exact half-circle
+        context.stroke()
+
+        // TEXT
+        context.fillStyle = 'seagreen'
+        context.font = '40px Comic sans MS'
+        context.fillText('Hello world!', 240, 50)
+
+    </script>
+
+</body>
+</html>
