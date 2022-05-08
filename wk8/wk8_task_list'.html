@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue Loops!</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <h1>Create a Task List</h1>
+
+    <div id="app">
+
+        <label for="task">Please enter a task: </label>
+        <input id="task" v-model="newTask">
+        <button v-on:click="addTask">Add to list</button>
+
+        <ul>
+            <li v-for="task in taskList">{{ task }}</li>  <!-- Vue for-loop -->
+        </ul>
+
+        <script>
+
+            let app = Vue.createApp({
+                data() {
+                    return {
+                        newTask: '',
+                        taskList: []  // modified by addTask() method using v-model
+                    }
+                },
+                methods: {
+                    addTask() {
+                        this.taskList.push(this.newTask)
+                        this.newTask = ''  // resets input box to empty
+                    }
+                }
+            })
+
+            app.mount('#app')
+
+        </script>
+
+    </div>
+
+</body>
+</html>

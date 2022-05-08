@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue!</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- VIEW -- everything Vue manages will go in this div -->
+
+        <h1>Hello Vue!</h1>  <!-- (can use same HTML functions as usual) static HTML element -->
+
+        <p>Original message: {{ message }}</p>  <!-- Vue replaces with data in 'message' property -->
+
+        <!-- using computed property -->
+        <p>Added Exclamation Points: {{ messageWithExclamationPoints }}</p>
+
+        <p>This class is {{ thisClass }}.</p>
+
+        <!-- v-on:click = calls method (in quotes) when event occurs -->
+        <button v-on:click="addExclamation">Add exclamation point</button>
+        <button v-on:click="clearExclamations">Clear</button>
+
+        <script>  // MODEL -- Vue manages this data and the view
+        // SAME JAVASCRIPT TOOLS ARE AVAILABLE AS OUTSIDE VUE
+            let app = Vue.createApp({
+                data() {  // interior function to create data for Vue to manage
+                    return {
+                        message: 'Hello',  // returned to Vue app -- if changed, is changed in view
+                        thisClass: 'Web Programming',
+                        maxExclamationPoints: 10,
+                        exclamationPoints: 0
+                    }
+                },
+                methods: {  // method = belongs to an object, function = standalone
+                    addExclamation() {  // always need 'this.' when referring to data values
+                        if(this.exclamationPoints < this.maxExclamationPoints) {
+                            // vvv no longer needed w/ computed properties
+                            // this.message = this.message + '!'  // adds one ea. time button is clicked
+                            this.exclamationPoints += 1
+                        }
+                    },
+                    clearExclamations() {
+                        // vvv changing data values in multiple places can lead to mistakes
+                        // this.message = 'Hello'
+                        this.exclamationPoints = 0  // remember to reset counters to 0
+                    }
+                },
+                computed: {
+                    // computed properties -- looks like method, but has special behavior
+                    messageWithExclamationPoints() {
+                        let messageWithPoints = this.message
+                        for (let x = 0; x < this.exclamationPoints; x++) {  // counting for-loop
+                            messageWithPoints = messageWithPoints + '!'
+                        }
+                        return messageWithPoints
+                    }
+                }
+            })
+
+            app.mount('#app')  // CSS selector (matches Vue div id) tells Vue instance what to manage
+
+        </script>
+
+    </div>
+
+</body>
+</html>

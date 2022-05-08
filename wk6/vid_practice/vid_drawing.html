@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Click to draw a picture!</title>
+
+    <style>  /* inline CSS */
+        canvas {
+            border: 1px black solid;  /* makes edge of canvas visible */
+        }
+    </style>
+</head>
+<body>
+    <!-- creates a canvas element to draw in -->
+    <canvas id="canvas" height="750" width="750"></canvas>
+
+    <script>  // inline Javascript
+        let canvas = document.querySelector('#canvas')
+        let context = canvas.getContext('2d')
+
+        // have to add 'event' in function due to deprecation
+        canvas.addEventListener('click', function (event) {
+            let x = event.offsetX  // x-coordinate of click location
+            let y = event.offsetY  // y-coordinate of click location
+
+            context.fillRect(x-10, y-10, 20, 20) // offset to center under cursor
+        })
+
+    </script>
+
+</body>
+</html>

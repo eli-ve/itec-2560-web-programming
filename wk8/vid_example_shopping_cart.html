@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue!</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <style>
+        td, th {
+            width: 25%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ unitPrice }}</td>
+                <td>
+                    <input type="number" v-model="quantity">
+                </td>
+                <td>${{ total }}</td>
+            </tr>
+        </table>
+
+        <script>
+
+            let app = Vue.createApp({
+                data() {
+                    return {
+                        name: 'Hat',
+                        quantity: 1,
+                        unitPrice: 9.99,
+                        maxQuantity: 20,
+                        quantityError: ''
+                    }
+                },
+                computed: {  // TODO: check screencap, update w/ if/elif/else incl. style
+                    total() {
+                        if (!Number.isInteger(this.quantity)) {
+                            this.quantityError = 'Quantity must be a number'
+                        }
+                        let totalPrice = this.quantity * this.unitPrice
+                        return totalPrice.toFixed(2)  // rounds to 2 decimals
+                    }
+                }
+            })
+
+            app.mount('#app')
+
+        </script>
+
+    </div>
+
+</body>
+</html>

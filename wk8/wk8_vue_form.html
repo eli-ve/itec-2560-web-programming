@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue!</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+
+    <div id="app">
+
+        <h1>Hello Vue Forms</h1>
+
+        <label for="name">Please enter your name: </label>
+        <!-- v-model 2-way data updating/data-binding -->
+        <!-- so, input changes = data changes, and vice versa (ex. via devtools) -->
+        <input v-model="name" id="name">
+
+        <!-- conditional rendering -- only renders if 'name' is not empty (truthy) -->
+        <p v-if="name">  <!-- can use with any element (div, etc.) -->
+            Your name is {{ name }}
+            <br>
+            <button v-on:click="clear">Clear input</button>
+        </p>
+        <p v-else>  <!-- MUST BE DIRECTLY AFTER V-IF STATEMENT -- MUST BE MATCHED TYPE (div, p, etc.) -->
+            Waiting for user input
+        </p>
+
+        <script>
+
+            let app = Vue.createApp({
+                data() {
+                    return {
+                        name: ''  // SINGLE QUOTES -- empty string
+                    }
+                },
+                methods: {
+                    clear() {
+                        this.name = ''
+                    }
+                }
+            })
+
+            app.mount('#app')
+
+        </script>
+
+    </div>
+
+</body>
+</html>

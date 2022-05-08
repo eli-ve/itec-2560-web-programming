@@ -47,4 +47,3 @@ function iss(attempts) {
         setTimeout(iss, update, attempts)
     })
 }
-
