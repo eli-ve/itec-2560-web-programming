@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Art Practice Time Tracker</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet"
+          href="styles.css"
+          type="text/css">
+</head>
+
+<body>
+    <div id="app" v-cloak>  <!-- 'v-cloak' attribute hides/removes divs until used/loaded (see CSS) -->
+        <h1 class="text-center">{{ activity }} Time Tracker</h1>
+
+        <div id="add-hours" class="card">
+            <h2 class="card-header">Add Records</h2>
+
+            <div class="card-body">
+                <!-- displays any errors from input validation in alert box at top of page -->
+                <div class="alert alert-danger" v-if="errors.length > 0">
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="date">What date did you do this activity?</label>
+                    <input id="date" class="form-control" type="date" v-model="dateString">
+                    <small id="date-help" class="form-text text-muted">Date must be today or in the past.</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="hours">How many hours did you practice for?</label>
+                    <input id="hours" class="form-control" type="number" min="0" max="24" v-model.number="hours">
+                    <small id="hours-help" class="form-text text-muted">
+                        Enter a number of hours, more than 0, up to a maximum of 24
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What type?</label>  <!-- adding for="type" is invalid -->
+                    <select class="form-control" v-model="type">
+                        <option v-for="activityType in types">{{ activityType }}</option>
+                    </select>
+                </div>
+
+                <div class="form-label pb-2">
+                    What media?
+                </div>
+
+                <!-- radio buttons must be v-modeled as a set (so only one is selected at a time) -->
+                <div class="form-check-inline">
+                    <input id="media1" class="form-check-input" type="radio" value="Traditional" v-model="medium">
+                    <label class="form-check-label" for="media1">Traditional</label>
+                </div>
+
+                <div class="form-check-inline">
+                    <input id="media2" class="form-check-input" type="radio" value="Digital" v-model="medium">
+                    <label class="form-check-label" for="media2">Digital</label>
+                </div>
+
+                <div>
+                    <button class="btn btn-primary mt-2" type="button" v-on:click="submit">Add record</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-header">Activity Records</h2>
+
+            <div class="card-body">
+                <h3>{{ totalRecordsMessage }}</h3>
+
+                <div id="records">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>Date</th>
+                            <th>How many hours?</th>
+                            <th>Type</th>
+                            <th>Media</th>
+                        </tr>
+
+                        <tr v-for="record in activityRecords">
+                            <td>{{ shortDate(record.date) }}</td>
+                            <td>{{ record.hours }}</td>
+                            <td>{{ record.type }}</td>
+                            <td>{{ record.medium }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-header">Summary</h2>
+
+            <div class="card-body">
+                <p>You have practiced a total of {{ totalHours }} hours</p>
+
+                <!-- NOTE: try this out later!! -->
+                <!-- Challenge question! Display a list of the total hours for each type.  -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let app = Vue.createApp({
+            data() {
+                return {
+                    activity: 'Practice Art',  // activity name
+                    activityRecords: [],  // Array of all activity records
+
+                    // v-modeled to form input
+                    dateString: '',
+                    hours: 1,
+                    type: 'Sketching',
+                    medium: 'Traditional',  // must set 'value' property in html so Vue can update
+
+                    // used with select-option in the form for user selection
+                    types: ['Sketching', 'Drawing', 'Painting'],
+                    errors: []
+                }
+            },
+            methods: {
+                submit() {
+                    this.errors = []
+                    let date = new Date(this.dateString)
+
+                    if (!this.dateString || this.dateString === 'Invalid Date' || date > new Date()) {
+                        this.errors.push('Select a valid date, today or in the past.')
+                    }
+                    if (this.hours <= 0 || this.hours > 24) {
+                        this.errors.push('Number of hours must be greater than 0 and less than or equal to 24.')
+                    }
+                    // didn't include since there are assigned default values/selections for these variables
+                    // if (!this.type) { this.errors.push('Select a type.') }
+                    // if (!this.medium) { this.errors.push('Select a medium.') }
+
+                    // if no errors are found, add to activityRecords
+                    if (this.errors.length === 0) {
+                        let record = {
+                            date: date,
+                            hours: this.hours,
+                            type: this.type,
+                            medium: this.medium
+                        }
+                        this.activityRecords.push(record)
+
+                        this.activityRecords.sort(function (r1, r2) {
+                            // sort oldest records first, newest at end
+                            return r1.date.getTime() - r2.date.getTime()
+                        })
+                    }
+                },
+                // see unixtimestamp.com or Javascript documentation for more info
+                shortDate(date) {
+                    return new Intl.DateTimeFormat('en-US', {timeZone: 'UTC'}).format(date)
+                }
+            },
+            computed: {
+                totalRecordsMessage() {
+                    let numberOfRecords = this.activityRecords.length
+
+                    if (numberOfRecords === 1) {
+                        return '1 record'
+                    } else {
+                        return numberOfRecords + ' records'
+                    }
+                },
+                totalHours() {
+                    let total = 0
+                    this.activityRecords.forEach(function (record) {
+                        total += record.hours
+                    })
+                    return total
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>
