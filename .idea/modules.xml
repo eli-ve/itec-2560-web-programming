@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/itec-2560-web-programming.iml" filepath="$PROJECT_DIR$/.idea/itec-2560-web-programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/../lab-7-capital-city-quiz-eli-ve/.idea/lab-7-capital-city-quiz-eli-ve.iml" filepath="$PROJECT_DIR$/../lab-7-capital-city-quiz-eli-ve/.idea/lab-7-capital-city-quiz-eli-ve.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wk9/.idea/wk9.iml" filepath="$PROJECT_DIR$/../wk9/.idea/wk9.iml" />
     </modules>
   </component>
 </project>
