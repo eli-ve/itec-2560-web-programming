@@ -6,6 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
+    <content url="file://$MODULE_DIR$/intro_express_api/hello-vue/dist" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="lab-7-capital-city-quiz-eli-ve" />
